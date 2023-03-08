@@ -4,19 +4,27 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rimraf build && rimraf out && rimraf .next",
+    "tizen-deploy": "cp tizen/* out && cd out && tizen clean && tizen build-web && tizen package -t wgt -s aptavis -- .buildResult && tizen install -s 172.19.1.127:26101 --name TEPNativeApp.wgt -- .buildResult",
+    "tizen-run": "tizen run -p LxXeUqQDo9.TEPNativeApp -s 172.19.1.127:26101",
+    "tizen-clean": "tizen clean"
   },
   "dependencies": {
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/tizen-common-web": "^2.0.1",
+    "@types/tizen-tv-webapis": "^2.0.1",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
     "next": "13.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tizen-common-web": "^2.0.1",
+    "tizen-tv-webapis": "^2.0.0",
     "typescript": "4.9.5"
   }
 }
