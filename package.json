@@ -8,9 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf build && rimraf out && rimraf .next",
-    "tizen-deploy": "cp tizen/* out && cd out && tizen clean && tizen build-web && tizen package -t wgt -s aptavis -- .buildResult && tizen install -s 172.19.1.127:26101 --name TEPNativeApp.wgt -- .buildResult",
+    "tizen-deploy": "cp tizen/* out && cd out && tizen clean && tizen build-web && tizen package -t wgt -s aptavis-partner -- .buildResult && tizen install -s 172.19.1.127:26101 --name TEPNativeApp.wgt -- .buildResult",
     "tizen-run": "tizen run -p LxXeUqQDo9.TEPNativeApp -s 172.19.1.127:26101",
-    "tizen-clean": "tizen clean"
+    "tizen-clean": "tizen clean",
+    "tizen-dev": "npm run tizen-deploy && npm run tizen-run"
   },
   "dependencies": {
     "@types/node": "18.14.6",
